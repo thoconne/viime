@@ -107,7 +107,8 @@ class CSVFile(db.Model):
     sample_group = db.Column(db.String, nullable=True)
     sample_group_obj = relationship('SampleGroup', backref='files',
                                     primaryjoin='foreign(CSVFile.sample_group) == '
-                                                'remote(SampleGroup.name)')
+                                                'remote(SampleGroup.name)',
+                                    order_by='CSVFile.name')
 
     @property
     def table_validation(self):
@@ -398,6 +399,7 @@ class CSVFileSchema(BaseSchema):
 class SampleGroup(db.Model):
     name = db.Column(db.String, primary_key=True)
     description = db.Column(db.String, nullable=True)
+    order = db.Column(db.Integer, nullable=True)
     files: List[CSVFile]
 
 
@@ -728,7 +730,11 @@ def _get_sample_metadata(csv_file: CSVFile) -> pandas.DataFrame:
 def _get_groups(csv_file: CSVFile) -> Optional[pandas.DataFrame]:
     if csv_file.group_column_index is None:
         return None
-    return csv_file.filter_table_by_types(TABLE_ROW_TYPES.DATA, TABLE_COLUMN_TYPES.GROUP)
+    groups = csv_file.filter_table_by_types(TABLE_ROW_TYPES.DATA, TABLE_COLUMN_TYPES.GROUP)
+    if groups is None:
+        return None
+    # ensure groups are strings
+    return groups.fillna('').astype(str)
 
 
 @csv_file_cache
