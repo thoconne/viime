@@ -5,34 +5,36 @@ tags:
   - visualization
   - web application
 authors:
-  - name: Thomas O'Connell
+  - name: Roni Choudhury
+    affiliation: 1
+  - name: Jonathan Beezley
+    affiliation: 1
+  - name: Brandon Davis
+    affiliation: 1
+  - name: Jared Tomeck
+    affiliation: 1
+  - name: Samuel Gratzl
     affiliation: 1
   - name: Lilian Golzarri Arroyo
-    affiliation: 1
-  - name: Jun Wan
-    affiliation: 1
-  - name: Daniel Raftery
     affiliation: 2
-  - name: Jon Beezley
+  - name: Daniel Raftery
     affiliation: 3
-  - name: Brandon Davis
-    affiliation: 3
-  - name: Roni Choudhury
-    affiliation: 3
-  - name: Samuel Gratzl
-    affiliation: 3
+  - name: Jun Wan
+    affiliation: 4
   - name: Jeff Baumes
-    affiliation: 3
-  - name: Jared Tomeck
-    affiliation: 3
+    affiliation: 1
+  - name: Thomas M. O'Connell
+    affiliation: 4
 affiliations:
-  - name: Indiana University
+  - name: Kitware Inc
     index: 1
-  - name: University of Washington
+  - name: Indiana University
     index: 2
-  - name: Kitware Inc.
+  - name: University of Washington
     index: 3
-date: 11 March 2020
+  - name: Indiana University School of Medicine
+  - index: 4
+  date: 11 March 2020
 bibliography: paper.bib
 
 ---
